@@ -1,0 +1,37 @@
+@startuml
+hide empty description
+state Encargar <<fork>>
+state Cobra <<fork>>
+[*] --> Encargar_el_Producto
+Encargar_el_Producto --> Encargar
+Encargar --> Pedido
+Encargar --> Pagar
+Pedido: Debe ser validado
+Pedido --> Validar_Pedido
+Validar_Pedido --> Cobrar_Pago
+Cobrar_Pago --> Cobra
+Cobra --> Pedido_Pagado
+Pagar --> Pedido_Pagado
+state "Obtener_Producto" <<sdlreceive>>
+state c <<choice>>
+Pedido_Pagado --> Obtener_Producto
+Obtener_Producto --> c : ¿Urgente?
+c --> Enviar_Urgente: si
+c --> Enviar_Ordinario : no
+state j <<fork>>
+Enviar_Ordinario --> j
+Enviar_Urgente --> j
+j --> Pedido_Realizado
+state k <<fork>>
+j --> k
+Cobra --> k
+k --> Dar_Cerveza_a_los_Transportistas
+state l <<fork>>
+Dar_Cerveza_a_los_Transportistas --> l
+l --> Añadir_a_los_Satisfechos
+l --> Enviar_Recibo
+state m <<fork>>
+Añadir_a_los_Satisfechos --> m
+Enviar_Recibo --> m
+m --> [*]
+@enduml
