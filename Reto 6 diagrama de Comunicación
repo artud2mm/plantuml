@@ -1,0 +1,17 @@
+@startuml
+
+object Registro
+Object crearNuevaVenta
+object Venta
+object Finalizar_Venta
+Venta : List_Linea_de_Ventas
+Venta : Date
+Registro : Catalogo_de_Productos
+Registro : Venta_venta
+Registro : Registro
+Registro --> crearNuevaVenta
+Registro --> Finalizar_Venta
+crearNuevaVenta --> Venta : 1
+Finalizar_Venta --> Venta : -1
+Venta --o Registro
+@enduml
