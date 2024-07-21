@@ -1,0 +1,43 @@
+@startuml
+object CapitanColombia{
+    James Rodriguez n 10
+}
+object CapitanVenezuela{
+    Salomon Rondon n 23
+}
+object JugadorColombia{
+    David Ospina n 1
+    James Rodriguez n 10
+    Camilo Vargas n 12    
+}
+object JugadorVenezuela{
+    Alain Baroja n 12
+    Salomon Rondon n 23
+    Roberto Rosales n 14
+}
+object EquipoColombia{
+    Colombia
+}
+object EquipoVenezuela{
+    Venezuela
+}
+map Juego{
+    Lugar => Caracas 
+    Venezuela => 5
+    Colombia => 3
+
+}
+object EntrenadorColombia{
+    Nestor Gabriel Lorenzo
+}
+object EntrenadorVenezuela{
+    Fernando Batista
+}
+JugadorVenezuela --* EquipoVenezuela
+JugadorColombia --* EquipoColombia
+EquipoVenezuela --> Juego
+EquipoColombia --> Juego
+EntrenadorVenezuela -- EquipoVenezuela
+EntrenadorColombia -- EquipoColombia
+CapitanVenezuela -- JugadorVenezuela
+CapitanColombia -- JugadorColombia

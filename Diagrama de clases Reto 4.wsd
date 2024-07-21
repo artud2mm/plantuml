@@ -1,0 +1,33 @@
+@startuml
+
+abstract Persona{
+    -nombre
+    -telefono
+    -direccion
+}
+class Entrenador{
+    -nivelDeAcreditacion
+    -anosDeExperiencia
+}
+class Jugador{
+    -Numero
+    -Posicion
+}
+class Capitan{
+
+}
+class Juego{
+    -localidad
+    -puntuacion
+}
+class Equipo{
+    -Nombre
+    -Registro
+}
+Jugador--|>Persona
+Entrenador--|>Persona
+Capitan"1"--Jugador
+Jugador"6..20"--*"1"Equipo
+Entrenador "1"--"1..*"Equipo
+Equipo "2"-->"1" Juego
+
